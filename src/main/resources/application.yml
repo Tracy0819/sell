@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.226.130:3306/sell?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+  redis:
+    host: 192.168.226.130
+    port: 6379
+server:
+  context-path: /sell
+
+wechat:
+  #公众账号的Id 和 secret 用于授权
+  #师兄
+  #mpAppId: wxd898fcb01713c658
+  mpAppId: wx49cfd616ddbd669f
+  mpAppSecret: 31bff267a543f253c1bcb09fd7941009
+
+  #开放平台，卖家扫码登录用
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
+  #支付 /商户号
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  #证书 发起支付时不需要证书,退款需要证书
+  keyPath:
+  #异步通知的地址
+  notifyUrl: http://tracy0819.natapp1.cc/sell/pay/notify
+  templateId:
+    orderStatus: 3ttGT6jJYs1zy5OgAxcv2ntME-qberpMndu1VKzeRJ0
+
+
+projectUrl:
+  wechatMpAuthorizeUrl: http://tracy0819.natapp1.cc
+  wechatOpenAuthorizeUrl: http://tracy0819.natapp1.cc
+  sellUrl: http://tracy0819.natapp1.cc
+
