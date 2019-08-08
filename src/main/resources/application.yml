@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: mac
+    active: windows
 
 server:
   context-path: /sell
@@ -30,3 +30,9 @@ projectUrl:
   wechatMpAuthorizeUrl: http://tracy0819.natapp1.cc
   wechatOpenAuthorizeUrl: http://tracy0819.natapp1.cc
   sellUrl: http://tracy0819.natapp1.cc
+#设置mybatis sql的日志级别
+logging:
+  level:
+      com.imooc.sell.Dao.mapper: trace
+mybatis:
+  mapper-locations: classpath:static/mapper/*.xml

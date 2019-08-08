@@ -48,6 +48,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PushMessage pushMessageService;
+
+    @Autowired
+    private  WebSocket webSocket;
     @Override
     @Transactional //事务注释 一旦发生异常就会回滚
     public OrderDTO create(OrderDTO orderDTO) {
@@ -87,6 +90,11 @@ public class OrderServiceImpl implements OrderService {
 
         //4.如果下单成功，扣库存
         productInfoService.decreaseStock(cartList);
+
+        //发送websocket消息 这块代码是用户端下单才会触发代码
+        webSocket.sendMessage(orderDTO.getOrderId());
+
+
         return orderDTO;
     }
 

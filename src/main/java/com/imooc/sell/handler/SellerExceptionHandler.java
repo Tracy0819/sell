@@ -1,10 +1,14 @@
 package com.imooc.sell.handler;
 
+import com.imooc.sell.VO.ResultVO;
 import com.imooc.sell.config.ProjectUrl;
+import com.imooc.sell.exception.SellException;
 import com.imooc.sell.exception.SellerAuthorizeException;
+import com.imooc.sell.utils.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -28,5 +32,14 @@ public class SellerExceptionHandler {
                 .concat("?returnUrl=")
                 .concat(projectUrlconfig.getSellUrl())
                 .concat("/sell/seller/login"));
+    }
+
+    /**
+     * 将前端返回错误时的异常进行处理
+     */
+    @ExceptionHandler(value = SellException.class)
+    @ResponseBody
+    public ResultVO handlerSellerException(SellException e) {
+        return ResultVOUtil.error(e.getCode(), e.getMessage());
     }
 }
